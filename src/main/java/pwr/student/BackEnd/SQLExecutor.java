@@ -5,10 +5,7 @@ import java.sql.*;
 public class SQLExecutor {
     private static final String urlPath = "jdbc:sqlite:/db/";
     private final Connection conn;
-    public SQLExecutor(){
-        conn = connect();
-    }
-    public static Connection connect() {
+    private static Connection connect() {
         Connection conn = null;
         try {
             // db parameters
@@ -25,6 +22,9 @@ public class SQLExecutor {
                 return conn;
         }
         return conn;
+    }
+    public SQLExecutor(){
+        conn = connect();
     }
     public void createNewDatabase(String fileName) {
         String url = urlPath + fileName;
@@ -66,7 +66,6 @@ public class SQLExecutor {
             System.out.println(e.getMessage());
         }
     }
-
     public ResultSet select(String sql){
         try{
             Statement stmt = conn.createStatement();
@@ -76,7 +75,6 @@ public class SQLExecutor {
         }
         return null;
     }
-
     public void close() throws SQLException {
         this.conn.close();
     }
