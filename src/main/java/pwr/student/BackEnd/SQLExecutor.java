@@ -1,10 +1,13 @@
 package pwr.student.BackEnd;
 
 import java.sql.*;
-import java.text.DateFormat;
 
 public class SQLExecutor {
     private static final String urlPath = "jdbc:sqlite:/db/";
+    private final Connection conn;
+    public SQLExecutor(){
+        conn = connect();
+    }
     public static Connection connect() {
         Connection conn = null;
         try {
@@ -23,8 +26,7 @@ public class SQLExecutor {
         }
         return conn;
     }
-    public static void createNewDatabase(String fileName) {
-
+    public void createNewDatabase(String fileName) {
         String url = urlPath + fileName;
 
         try (Connection conn = DriverManager.getConnection(url)) {
@@ -38,11 +40,9 @@ public class SQLExecutor {
             System.out.println(e.getMessage());
         }
     }
-    public static void createNewTable() {
-        // SQLite connection string
+    public void createNewTable() {
         String url = urlPath+"database.db";
 
-        // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS decision (\n"
                 + "	id integer PRIMARY KEY,\n"
                 + "	date date NOT NULL,\n"
@@ -52,15 +52,13 @@ public class SQLExecutor {
                 + "	description text \n"
                 + ");";
 
-        try (Connection conn = DriverManager.getConnection(url);
-             Statement stmt = conn.createStatement()) {
-            // create a new table
+        try (Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-    public static void insert(String sql,Connection conn){
+    public void executeSQL(String sql){
         try {
             Statement stmt = conn.createStatement();
             stmt.execute(sql);
@@ -69,7 +67,7 @@ public class SQLExecutor {
         }
     }
 
-    public static ResultSet select(String sql,Connection conn){
+    public ResultSet select(String sql){
         try{
             Statement stmt = conn.createStatement();
             return stmt.executeQuery(sql);
@@ -78,23 +76,35 @@ public class SQLExecutor {
         }
         return null;
     }
+
+    public void close() throws SQLException {
+        this.conn.close();
+    }
     public static void main(String[] args) throws SQLException {
         //createNewDatabase("database.db");
         //createNewTable();
-        String sql = SQLBuilder.buildInsert("decision", (new Date(1)).toString(),"ExampleComponent","Krzysztof",1,"Example_description");
-        Connection conn = connect();
+        String sql = SQLBuilder.buildInsert("decision", new Date(1),"ExampleComponent","Krzysztof",1,"Example_description");
+        SQLExecutor sqlExecutor = new SQLExecutor();
         System.out.println(sql);
-        insert(sql,conn);
-        String[] columns = new String[] {"id","person"};
+        sqlExecutor.executeSQL(sql);
+        sql = SQLBuilder.buildDelete("decision",1,10);
+        System.out.println(sql);
+        sqlExecutor.executeSQL(sql);
+        String[] columns = new String[] {"*"};
         sql = SQLBuilder.buildSelect("decision",columns);
         System.out.println(sql);
-        ResultSet rs = select(sql,conn);
+        ResultSet rs = sqlExecutor.select(sql);
 
         while (rs.next()) {
-            System.out.println(rs.getInt("id") +  "\t" +
-                    rs.getString("person"));
+            System.out.println(
+                      rs.getInt("id") + "\t"
+                    + rs.getString("person") + "\t"
+                    + MyDate.getRepresentation(rs.getDate("date")) + "\t"
+                    + rs.getString("component") + "\t"
+                    + rs.getInt("priority") + "\t"
+                    + rs.getString("description"));
         }
 
-        conn.close();
+        sqlExecutor.close();
     }
 }
