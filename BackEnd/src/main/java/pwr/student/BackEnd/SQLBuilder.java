@@ -1,5 +1,6 @@
 package pwr.student.BackEnd;
 import java.sql.Date;
+import java.util.Map;
 
 public class SQLBuilder {
     public static String buildInsert(String table, Date date, String component, String person, Integer priority, String description) {
@@ -19,6 +20,16 @@ public class SQLBuilder {
             sql.append(col).append(",");
         sql = new StringBuilder(sql.substring(0, sql.length() - 1));
         sql.append(" FROM ").append(table);
+        return sql.toString();
+    }
+
+    public static String buildSearchSelect(String table,String[] columns, Map<String,String> conditions){
+        StringBuilder sql = new StringBuilder(buildSelect(table,columns));
+        sql.append(" WHERE ");
+
+        for (String key : conditions.keySet())
+            sql.append(key).append("=").append(conditions.get(key)).append(" AND ");
+        sql = new StringBuilder(sql.substring(0, sql.length() - 5));
         return sql.toString();
     }
 
