@@ -2,9 +2,6 @@ package pwr.student.BackEnd;
 import java.sql.Date;
 
 public class SQLBuilder {
-    public SQLBuilder(){
-
-    }
     public static String buildInsert(String table, Date date, String component, String person, Integer priority, String description) {
         return "INSERT INTO "
                 +table

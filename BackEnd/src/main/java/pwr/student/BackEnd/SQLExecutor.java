@@ -3,9 +3,10 @@ package pwr.student.BackEnd;
 import java.sql.*;
 
 public class SQLExecutor {
-    private static final String urlPath = "jdbc:sqlite:/db/";
+    private static final String urlPath = "jdbc:sqlite:.\\db\\";
     private final Connection conn;
-    private static Connection connect() {
+    private static Connection connect() throws ClassNotFoundException {
+        //Class.forName("org.sqlite.JDBC");
         Connection conn = null;
         try {
             // db parameters
@@ -23,7 +24,7 @@ public class SQLExecutor {
         }
         return conn;
     }
-    public SQLExecutor(){
+    public SQLExecutor() throws ClassNotFoundException {
         conn = connect();
     }
     public void createNewDatabase(String fileName) {
@@ -78,16 +79,17 @@ public class SQLExecutor {
     public void close() throws SQLException {
         this.conn.close();
     }
-    public static void main(String[] args) throws SQLException {
-        //createNewDatabase("database.db");
-        //createNewTable();
-        String sql = SQLBuilder.buildInsert("decision", new Date(1),"ExampleComponent","Krzysztof",1,"Example_description");
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         SQLExecutor sqlExecutor = new SQLExecutor();
+
+        sqlExecutor.createNewDatabase("database.db");
+        sqlExecutor.createNewTable();
+        String sql = SQLBuilder.buildInsert("decision", new Date(1),"ExampleComponent","Krzysztof",1,"Example_description");
         System.out.println(sql);
         sqlExecutor.executeSQL(sql);
         sql = SQLBuilder.buildDelete("decision",1,10);
         System.out.println(sql);
-        sqlExecutor.executeSQL(sql);
+        //sqlExecutor.executeSQL(sql);
         String[] columns = new String[] {"*"};
         sql = SQLBuilder.buildSelect("decision",columns);
         System.out.println(sql);
