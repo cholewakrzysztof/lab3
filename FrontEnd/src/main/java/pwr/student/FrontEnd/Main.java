@@ -3,16 +3,12 @@ package pwr.student.FrontEnd;
 import pwr.student.BackEnd.SQLBuilder;
 import pwr.student.BackEnd.SQLExecutor;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) throws Exception {
         SQLExecutor sqlExecutor = new SQLExecutor();
         String sql;
 
@@ -37,5 +33,7 @@ public class Main {
         sql = SQLBuilder.buildSearchSelect("decision",columns,conditions);
         rs = sqlExecutor.select(sql);
         DatabaseResultPrinter.printTableResult(rs,columns);
+
+        sqlExecutor.close();
     }
 }

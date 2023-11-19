@@ -2,17 +2,27 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="lab3.FrontEnd:jar" />
+      <artifact name="build" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Rebuild structure of project">
+    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Add searched select function&#10;Communication between Back and Front">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/lab3_BackEnd_main_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/lab3_FrontEnd_main_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/lab3_BackEnd_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/lab3_FrontEnd_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackEndGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackEndGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +40,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="module-info" />
       </list>
     </option>
   </component>
@@ -45,25 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "D:/JAVA/lab3/BackEnd",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JAVA/lab2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JAVA\lab3\FrontEnd\src\main\java\pwr\student\FrontEnd" />
@@ -81,7 +92,10 @@
       <workItem from="1699999735895" duration="4953000" />
       <workItem from="1700005121397" duration="3206000" />
       <workItem from="1700081033070" duration="6238000" />
-      <workItem from="1700123621044" duration="14739000" />
+      <workItem from="1700123621044" duration="15035000" />
+      <workItem from="1700167244180" duration="5401000" />
+      <workItem from="1700430218839" duration="1019000" />
+      <workItem from="1700431966909" duration="461000" />
     </task>
     <task id="LOCAL-00001" summary="First push">
       <option name="closed" value="true" />
@@ -123,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700135430666</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add searched select function&#10;Communication between Back and Front">
+      <option name="closed" value="true" />
+      <created>1700142067830</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700142067830</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +157,7 @@
     <MESSAGE value="Add MyDate class for handling date format&#10;Select, delete and insert work" />
     <MESSAGE value="Add frontEnd class for printing query" />
     <MESSAGE value="Rebuild structure of project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rebuild structure of project" />
+    <MESSAGE value="Add searched select function&#10;Communication between Back and Front" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add searched select function&#10;Communication between Back and Front" />
   </component>
 </project>

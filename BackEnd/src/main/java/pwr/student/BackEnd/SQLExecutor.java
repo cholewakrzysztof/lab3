@@ -5,7 +5,7 @@ import java.sql.*;
 public class SQLExecutor {
     private static final String urlPath = "jdbc:sqlite:.\\db\\";
     private final Connection conn;
-    private static Connection connect() throws ClassNotFoundException {
+    private static Connection connect() throws Exception {
         //Class.forName("org.sqlite.JDBC");
         Connection conn = null;
         try {
@@ -16,15 +16,17 @@ public class SQLExecutor {
 
             System.out.println("Connection to SQLite has been established.");
 
+            if (conn != null)
+                return conn;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
-            if (conn != null)
-                return conn;
+            if(conn==null)
+                throw new Exception(urlPath);
         }
-        return conn;
+        return null;
     }
-    public SQLExecutor() throws ClassNotFoundException {
+    public SQLExecutor() throws Exception {
         conn = connect();
     }
     public void createNewDatabase(String fileName) {
@@ -78,33 +80,5 @@ public class SQLExecutor {
     }
     public void close() throws SQLException {
         this.conn.close();
-    }
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        SQLExecutor sqlExecutor = new SQLExecutor();
-
-        sqlExecutor.createNewDatabase("database.db");
-        sqlExecutor.createNewTable();
-        String sql = SQLBuilder.buildInsert("decision", new Date(1),"ExampleComponent","Krzysztof",1,"Example_description");
-        System.out.println(sql);
-        sqlExecutor.executeSQL(sql);
-        sql = SQLBuilder.buildDelete("decision",1,10);
-        System.out.println(sql);
-        //sqlExecutor.executeSQL(sql);
-        String[] columns = new String[] {"*"};
-        sql = SQLBuilder.buildSelect("decision",columns);
-        System.out.println(sql);
-        ResultSet rs = sqlExecutor.select(sql);
-
-        while (rs.next()) {
-            System.out.println(
-                      rs.getInt("id") + "\t"
-                    + rs.getString("person") + "\t"
-                    + MyDate.getRepresentation(rs.getDate("date")) + "\t"
-                    + rs.getString("component") + "\t"
-                    + rs.getInt("priority") + "\t"
-                    + rs.getString("description"));
-        }
-
-        sqlExecutor.close();
     }
 }

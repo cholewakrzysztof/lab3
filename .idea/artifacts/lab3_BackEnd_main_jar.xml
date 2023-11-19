@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="lab3.BackEnd.main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab3_BackEnd_main_jar</output-path>
+    <root id="root">
+      <element id="archive" name="lab3.BackEnd.main.jar">
+        <element id="module-output" name="lab3.BackEnd.main" />
+      </element>
+    </root>
+  </artifact>
+</component>
