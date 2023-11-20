@@ -6,7 +6,7 @@ import pwr.student.BackEnd.Respond;
 
 public class FrontGate {
     public void sendRequest(BackGate backGate,Request request) throws Exception {
-        backGate.recieveRequest(request);
+        backGate.receiveRequest(request);
     }
     public Respond getRespond(BackGate backGate){
         return backGate.getRespond();

@@ -9,20 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Push database">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackGate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Operation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Respond.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DataValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/FrontGate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/RequestBuilder.java" afterDir="false" />
+    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Add classes for comunication between packages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackEndGate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Operation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Respond.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Respond.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DataValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DataValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/FrontGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/FrontGate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/RequestBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/RequestBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +39,8 @@
       <list>
         <option value="module-info" />
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -100,7 +99,10 @@
       <workItem from="1700123621044" duration="15035000" />
       <workItem from="1700167244180" duration="5401000" />
       <workItem from="1700430218839" duration="1019000" />
-      <workItem from="1700431966909" duration="7166000" />
+      <workItem from="1700431966909" duration="7459000" />
+      <workItem from="1700467597145" duration="619000" />
+      <workItem from="1700468895485" duration="6379000" />
+      <workItem from="1700485594184" duration="4030000" />
     </task>
     <task id="LOCAL-00001" summary="First push">
       <option name="closed" value="true" />
@@ -166,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700432548592</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add classes for comunication between packages">
+      <option name="closed" value="true" />
+      <created>1700439261188</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700439261188</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +191,7 @@
     <MESSAGE value="Add searched select function&#10;Communication between Back and Front" />
     <MESSAGE value="BackEnd prepare and project structure changed to gradle, working artifacts set" />
     <MESSAGE value="Push database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Push database" />
+    <MESSAGE value="Add classes for comunication between packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add classes for comunication between packages" />
   </component>
 </project>

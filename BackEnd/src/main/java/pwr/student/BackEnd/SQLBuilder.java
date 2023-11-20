@@ -33,14 +33,6 @@ public class SQLBuilder {
         sql = new StringBuilder(sql.substring(0, sql.length() - 5));
         return sql.toString();
     }
-
-    public String buildDelete(String[] indexes){
-        StringBuilder sql = new StringBuilder("DELETE from " + table + " WHERE id=");
-        for (String id : indexes)
-            sql.append(id).append(" OR id=");
-        sql = new StringBuilder(sql.substring(0, sql.length() - 6));
-        return sql.toString();
-    }
     public String buildDelete(int start, int stop){
         return "DELETE from "+table+" WHERE id BETWEEN "+start+" AND "+stop;
     }

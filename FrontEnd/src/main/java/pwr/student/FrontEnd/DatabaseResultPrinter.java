@@ -17,6 +17,11 @@ public class DatabaseResultPrinter {
             col.add("id");
             col.add("description");
         }
+        String title = "";
+        for (String column:col) {
+            title+=column+"\t";
+        }
+        System.out.println(title);
         while (rs.next()) {
             String row = "";
             for (String column:col) {

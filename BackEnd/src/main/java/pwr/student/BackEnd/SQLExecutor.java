@@ -61,13 +61,14 @@ public class SQLExecutor {
             System.out.println(e.getMessage());
         }
     }
-    public void executeSQL(String sql){
+    public boolean executeSQL(String sql){
         try {
             Statement stmt = conn.createStatement();
-            stmt.execute(sql);
+            return stmt.execute(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return false;
     }
     public ResultSet select(String sql){
         try{
