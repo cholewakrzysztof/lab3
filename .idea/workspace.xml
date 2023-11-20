@@ -9,20 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Add searched select function&#10;Communication between Back and Front">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/lab3_BackEnd_main_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/lab3_FrontEnd_main_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/lab3_BackEnd_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/lab3_FrontEnd_jar.xml" beforeDir="false" />
+    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Push database">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackGate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Operation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Respond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DataValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/FrontGate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/RequestBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackEndGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackEndGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/BackEndGate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/pwr/student/BackEnd/SQLBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +38,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
-        <option value="Enum" />
         <option value="module-info" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -76,6 +77,10 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="pwr.student.BackEnd" />
+      <recent name="pwr.student.FrontEnd" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JAVA\lab3\FrontEnd\src\main\java\pwr\student\FrontEnd" />
       <recent name="D:\JAVA\lab3\BackEnd\src\main\java\pwr\student\BackEnd" />
@@ -95,7 +100,7 @@
       <workItem from="1700123621044" duration="15035000" />
       <workItem from="1700167244180" duration="5401000" />
       <workItem from="1700430218839" duration="1019000" />
-      <workItem from="1700431966909" duration="461000" />
+      <workItem from="1700431966909" duration="7166000" />
     </task>
     <task id="LOCAL-00001" summary="First push">
       <option name="closed" value="true" />
@@ -145,7 +150,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700142067830</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="BackEnd prepare and project structure changed to gradle, working artifacts set">
+      <option name="closed" value="true" />
+      <created>1700432517084</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700432517084</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Push database">
+      <option name="closed" value="true" />
+      <created>1700432548592</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700432548592</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +179,8 @@
     <MESSAGE value="Add frontEnd class for printing query" />
     <MESSAGE value="Rebuild structure of project" />
     <MESSAGE value="Add searched select function&#10;Communication between Back and Front" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add searched select function&#10;Communication between Back and Front" />
+    <MESSAGE value="BackEnd prepare and project structure changed to gradle, working artifacts set" />
+    <MESSAGE value="Push database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Push database" />
   </component>
 </project>

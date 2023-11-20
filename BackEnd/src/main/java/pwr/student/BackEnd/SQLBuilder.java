@@ -3,9 +3,10 @@ import java.sql.Date;
 import java.util.Map;
 
 public class SQLBuilder {
-    public static String buildInsert(String table, Date date, String component, String person, Integer priority, String description) {
+    private String table;
+    public String buildInsert(Date date, String component, String person, Integer priority, String description) {
         return "INSERT INTO "
-                +table
+                +this.table
                 +"(date,component,person,priority,description)"
                 +" VALUES('"
                 +MyDate.getRepresentation(date)+"','"
@@ -14,7 +15,7 @@ public class SQLBuilder {
                 +priority+",'"
                 +description+"')";
     }
-    public static String buildSelect(String table,String[] columns){
+    public String buildSelect(String[] columns){
         StringBuilder sql = new StringBuilder("SELECT ");
         for (String col : columns)
             sql.append(col).append(",");
@@ -23,8 +24,8 @@ public class SQLBuilder {
         return sql.toString();
     }
 
-    public static String buildSearchSelect(String table,String[] columns, Map<String,String> conditions){
-        StringBuilder sql = new StringBuilder(buildSelect(table,columns));
+    public String buildSearchSelect(String[] columns, Map<String,String> conditions){
+        StringBuilder sql = new StringBuilder(buildSelect(columns));
         sql.append(" WHERE ");
 
         for (String key : conditions.keySet())
@@ -33,15 +34,18 @@ public class SQLBuilder {
         return sql.toString();
     }
 
-    public static String buildDelete(String table, String[] indexes){
+    public String buildDelete(String[] indexes){
         StringBuilder sql = new StringBuilder("DELETE from " + table + " WHERE id=");
         for (String id : indexes)
             sql.append(id).append(" OR id=");
         sql = new StringBuilder(sql.substring(0, sql.length() - 6));
         return sql.toString();
     }
-    public static String buildDelete(String table, int start, int stop){
+    public String buildDelete(int start, int stop){
         return "DELETE from "+table+" WHERE id BETWEEN "+start+" AND "+stop;
     }
-    
+
+    public void choseTable(String name){
+        this.table = name;
+    }
 }
