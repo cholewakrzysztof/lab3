@@ -47,10 +47,10 @@ public class RequestBuilder {
                 System.out.println("Start of building insert, type enter to chose each default option");
                 HashMap<String,String> params = buildParams(Operation.INSERT);
 
-                if(DataValidator.validInsertParams(params))
+                if(DataValidator.validInsertParams(params).equals("true"))
                     req.setParams(params);
                 else
-                    System.out.println("Wrong params");
+                    System.out.println(DataValidator.validInsertParams(params));
             }
             case SEARCH_SELECT -> {
                 System.out.println("Start of building searching params with ' ' between them, type enter to end");
@@ -75,7 +75,7 @@ public class RequestBuilder {
             case INSERT -> {
                 System.out.println("Type person name (default: Krzysztof)");
                 params.put("person", scanner.nextLine());
-                System.out.println("Type date (default: today date)");
+                System.out.println("Type date in format yyyy-MM-dd HH:mm:ss (default: today date)");
                 params.put("date", scanner.nextLine());
                 System.out.println("Type component name (default: default_component)");
                 params.put("component", scanner.nextLine());

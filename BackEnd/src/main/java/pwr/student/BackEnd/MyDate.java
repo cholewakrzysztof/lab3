@@ -8,7 +8,6 @@ public class MyDate {
     public static String getRepresentation(Date date){
         return sdf.format(date.getTime());
     }
-
     public static Date getDate(String representation) throws ParseException {
         return (Date) sdf.parse(representation);
     }
