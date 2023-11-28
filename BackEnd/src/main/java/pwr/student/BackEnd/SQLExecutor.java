@@ -6,12 +6,9 @@ public class SQLExecutor {
     private static final String urlPath = "jdbc:sqlite:.\\db\\";
     private final Connection conn;
     private static Connection connect() throws Exception {
-        //Class.forName("org.sqlite.JDBC");
-        Connection conn = null;
+        Connection conn;
         try {
-            // db parameters
             String url = urlPath+"database.db";
-            // create a connection to the database
             conn = DriverManager.getConnection(url);
 
             System.out.println("Connection to SQLite has been established.");

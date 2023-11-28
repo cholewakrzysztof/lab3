@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 public class DataValidator {
@@ -15,10 +16,7 @@ public class DataValidator {
         if(params.size()>2)
             return false;
         try{
-            if(Integer.parseInt(params.get("start"))>-1)
-                if(Integer.parseInt(params.get("end"))>-1)
-                    return true;
-            return false;
+            return Integer.parseInt(params.get("start")) > -1 && Integer.parseInt(params.get("end")) > -1;
         }catch (Exception e){
             return false;
         }
@@ -27,7 +25,7 @@ public class DataValidator {
         String date = params.get("date");
         if(!date.isEmpty()) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            if (!isValidDate(date, sdf))
+            if (isNotValidDate(date, sdf))
                 return "Date should be in format yyyy-MM-dd HH:mm:ss";
         }
 
@@ -49,25 +47,58 @@ public class DataValidator {
 
         return "true";
     }
-    private static boolean isValidDate(String input,SimpleDateFormat format) {
+    private static boolean isNotValidDate(String input, SimpleDateFormat format) {
         try {
             format.parse(input);
-            return true;
+            return false;
         }
         catch(ParseException e){
-            return false;
+            return true;
         }
     }
-    public static boolean validSearchParams(HashMap<String,String> params){
-        if(!params.keySet().stream().allMatch(col -> Arrays.stream(knownColumns).toList().contains(col)))
-            return false;
+    public static String validSearchParams(HashMap<String,String> params){
+        if(!new HashSet<>(Arrays.stream(knownColumns).toList()).containsAll(params.keySet()))
+            return "Wrong column name";
 
         Set<String> keySet = params.keySet();
 
-        //TODO valid all params
-        //if(keySet.contains("id"))
+        if(keySet.contains("date")) {
+            String date = params.get("date");
+            if (!date.isEmpty()) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                if (isNotValidDate(date, sdf))
+                    return "Date should be in format yyyy-MM-dd HH:mm:ss";
+            }
+        }
 
-        return true;
+        if(keySet.contains("person")) {
+            String person = params.get("person");
+            if (person.matches("[0-9]"))
+                return "Person can't have number in name";
+        }
+
+        if(keySet.contains("component")) {
+            String component = params.get("component");
+            if (component.length() > 50)
+                return "Component name too long, max 50 chars";
+        }
+
+        if(keySet.contains("priority")) {
+            String priority = params.get("priority");
+            if (priority.matches("[a-z]|[A-Z]"))
+                return "Priority should be integer";
+        }
+
+        if(keySet.contains("description")) {
+            String description = params.get("description");
+            if (description.length() > 255)
+                return "Description too long, max 255 chars";
+        }
+
+
+
+
+        return "true";
     }
     public static HashMap<String,String> rebuildParams(HashMap<String,String> params){
         Set<String> keySet = params.keySet();

@@ -69,7 +69,7 @@ public class RequestBuilder {
                         System.out.println("Start of building searching params with ' ' between them (column value), type enter to end");
                         HashMap<String, String> params = buildParams(Operation.SEARCH_SELECT);
 
-                        if (DataValidator.validSearchParams(params)) {
+                        if (DataValidator.validSearchParams(params).equals("true")) {
                             restart = false;
                             req.setParams(DataValidator.rebuildParams(params));
                             System.out.println("Type columns with space between names");
@@ -81,7 +81,7 @@ public class RequestBuilder {
                                 System.out.println("Wrong columns abort mission");
                             }
                         } else {
-                            System.out.println("Wrong params");
+                            System.out.println(DataValidator.validSearchParams(params));
                         }
                     }
                 }

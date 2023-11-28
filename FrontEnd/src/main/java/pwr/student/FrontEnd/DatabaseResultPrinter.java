@@ -17,15 +17,15 @@ public class DatabaseResultPrinter {
             col.add("id");
             col.add("description");
         }
-        String title = "";
+        StringBuilder title = new StringBuilder();
         for (String column:col) {
-            title+=column+"\t";
+            title.append(column).append("\t");
         }
         System.out.println(title);
         while (rs.next()) {
-            String row = "";
+            StringBuilder row = new StringBuilder();
             for (String column:col) {
-                row+=rs.getString(column)+"\t";
+                row.append(rs.getString(column)).append("\t");
             }
             System.out.println(row);
         }
