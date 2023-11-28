@@ -1,5 +1,5 @@
 package pwr.student.BackEnd;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Map;
 
 public class SQLBuilder {

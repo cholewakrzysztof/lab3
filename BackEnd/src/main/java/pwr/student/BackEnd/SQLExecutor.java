@@ -18,11 +18,10 @@ public class SQLExecutor {
 
             if (conn != null)
                 return conn;
+            else
+                throw new Exception(urlPath);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } finally {
-            if(conn==null)
-                throw new Exception(urlPath);
         }
         return null;
     }
@@ -46,14 +45,14 @@ public class SQLExecutor {
     public void createNewTable() {
         String url = urlPath+"database.db";
 
-        String sql = "CREATE TABLE IF NOT EXISTS decision (\n"
-                + "	id integer PRIMARY KEY,\n"
-                + "	date date NOT NULL,\n"
-                + "	component text,\n"
-                + "	person text text,\n"
-                + "	priority integer, \n"
-                + "	description text \n"
-                + ");";
+        String sql = "CREATE TABLE IF NOT EXISTS decision (\n" +
+                "	id integer PRIMARY KEY,\n" +
+                "	date date NOT NULL,\n" +
+                "	component text,\n" +
+                "	person text text,\n" +
+                "	priority integer, \n" +
+                "	description text \n" +
+                ");";
 
         try (Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
@@ -64,7 +63,9 @@ public class SQLExecutor {
     public boolean executeSQL(String sql){
         try {
             Statement stmt = conn.createStatement();
-            return stmt.execute(sql);
+            stmt.execute(sql);
+                if(stmt.getUpdateCount()!=0)
+                    return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

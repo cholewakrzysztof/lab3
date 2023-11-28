@@ -1,5 +1,6 @@
 package pwr.student.BackEnd;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public class BackGate {

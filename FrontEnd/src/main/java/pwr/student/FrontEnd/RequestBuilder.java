@@ -3,8 +3,12 @@ package pwr.student.FrontEnd;
 import pwr.student.BackEnd.Operation;
 import pwr.student.BackEnd.Request;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 
 public class RequestBuilder {
     public static Request buildRequest() throws Exception {
@@ -16,12 +20,13 @@ public class RequestBuilder {
         System.out.println("SEARCH SELECT....ss");
         System.out.println("DELETE............d");
         System.out.println("INSERT............i");
-
+        System.out.println("QUIT..............q");
         switch (scanner.nextLine()){
             case "s" -> req.setOperation(Operation.SELECT);
             case "ss" -> req.setOperation(Operation.SEARCH_SELECT);
             case "d" -> req.setOperation(Operation.DELETE);
             case "i" -> req.setOperation(Operation.INSERT);
+            case "q" -> {System.out.println("Exit");exit(0);}
             default -> throw new Exception("Wrong option typed");
         }
 
@@ -76,7 +81,6 @@ public class RequestBuilder {
                                 System.out.println("Wrong columns abort mission");
                             }
                         } else {
-                            restart = true;
                             System.out.println("Wrong params");
                         }
                     }
@@ -93,7 +97,7 @@ public class RequestBuilder {
 
         switch (op){
             case INSERT -> {
-                String value = "";
+                String value;
 
                 System.out.println("Type person name (default: Krzysztof)");
                 value = scanner.nextLine();
@@ -102,8 +106,8 @@ public class RequestBuilder {
 
                 System.out.println("Type date in format yyyy-MM-dd HH:mm:ss (default: today date)");
                 value = scanner.nextLine();
-                value = !value.isEmpty() ? value : "2023-10-12 10:30:51";
-                //TODO zmienić date!!!
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                value = !value.isEmpty() ? value : sdf.format(new Date());
                 params.put("date", value);
 
                 System.out.println("Type component name (default: default_component)");

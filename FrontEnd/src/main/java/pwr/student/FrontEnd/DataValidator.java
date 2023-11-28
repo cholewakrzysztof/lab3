@@ -25,7 +25,7 @@ public class DataValidator {
     }
     public static String validInsertParams(HashMap<String,String> params){
         String date = params.get("date");
-        if(date.length()>0) {
+        if(!date.isEmpty()) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             if (!isValidDate(date, sdf))
                 return "Date should be in format yyyy-MM-dd HH:mm:ss";
@@ -72,11 +72,11 @@ public class DataValidator {
     public static HashMap<String,String> rebuildParams(HashMap<String,String> params){
         Set<String> keySet = params.keySet();
         if(keySet.contains("description"))
-            params.put("description","'"+params.get("description").toString()+"'");
+            params.put("description","'"+ params.get("description") +"'");
         if(keySet.contains("person"))
-            params.put("person","'"+params.get("person").toString()+"'");
+            params.put("person","'"+params.get("person")+"'");
         if(keySet.contains("component"))
-            params.put("component","'"+params.get("component").toString()+"'");
+            params.put("component","'"+params.get("component")+"'");
         return params;
     }
 
