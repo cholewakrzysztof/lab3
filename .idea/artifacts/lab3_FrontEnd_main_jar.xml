@@ -4,7 +4,7 @@
     <root id="archive" name="lab3.FrontEnd.main.jar">
       <element id="module-output" name="lab3.FrontEnd.main" />
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/FrontEnd/META-INF/MANIFEST.MF" />
       </element>
     </root>
   </artifact>
