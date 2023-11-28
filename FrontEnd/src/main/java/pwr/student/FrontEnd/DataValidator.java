@@ -25,9 +25,11 @@ public class DataValidator {
     }
     public static String validInsertParams(HashMap<String,String> params){
         String date = params.get("date");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        if(!isValidDate(date,sdf))
-            return "Date should be in format yyyy-MM-dd HH:mm:ss";
+        if(date.length()>0) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            if (!isValidDate(date, sdf))
+                return "Date should be in format yyyy-MM-dd HH:mm:ss";
+        }
 
         String person = params.get("person");
         if(person.matches("[0-9]"))
@@ -66,6 +68,16 @@ public class DataValidator {
         //if(keySet.contains("id"))
 
         return true;
+    }
+    public static HashMap<String,String> rebuildParams(HashMap<String,String> params){
+        Set<String> keySet = params.keySet();
+        if(keySet.contains("description"))
+            params.put("description","'"+params.get("description").toString()+"'");
+        if(keySet.contains("person"))
+            params.put("person","'"+params.get("person").toString()+"'");
+        if(keySet.contains("component"))
+            params.put("component","'"+params.get("component").toString()+"'");
+        return params;
     }
 
 

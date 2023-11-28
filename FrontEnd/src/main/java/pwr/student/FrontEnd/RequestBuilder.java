@@ -25,45 +25,65 @@ public class RequestBuilder {
             default -> throw new Exception("Wrong option typed");
         }
 
-        switch (req.getOperation()){
-            case SELECT -> {
-                System.out.println("Type columns with space between names");
-                String[] columns = scanner.nextLine().split(" ");
-                if(DataValidator.validColumns(columns))
-                    req.setColumns(columns);
-                else
-                    System.out.println("Wrong columns abort mission");
+        boolean restart = true;
+        while (restart) {
+            switch (req.getOperation()) {
+                case SELECT -> {
+                    System.out.println("Type columns with space between names");
+                    String[] columns = scanner.nextLine().split(" ");
+                    if (DataValidator.validColumns(columns)) {
+                        restart = false;
+                        req.setColumns(columns);
+                    }else
+                        System.out.println("Wrong columns abort mission");
 
-            }
-            case DELETE ->{
-                System.out.println("Type scope of indexes to delete 'start,end'");
-                HashMap<String,String> params = buildParams(Operation.DELETE);
-                if(DataValidator.validScope(params))
-                    req.setParams(params);
-                else
-                    System.out.println("Wrong typed scope");
-            }
-            case INSERT -> {
-                System.out.println("Start of building insert, type enter to chose each default option");
-                HashMap<String,String> params = buildParams(Operation.INSERT);
+                }
+                case DELETE -> {
+                    System.out.println("Type scope of indexes to delete 'start,end'");
+                    HashMap<String, String> params = buildParams(Operation.DELETE);
+                    if (DataValidator.validScope(params)) {
+                        restart = false;
+                        req.setParams(params);
+                    }else
+                        System.out.println("Wrong typed scope");
+                }
+                case INSERT -> {
+                    System.out.println("Start of building insert, type enter to chose each default option");
+                    HashMap<String, String> params = buildParams(Operation.INSERT);
 
-                if(DataValidator.validInsertParams(params).equals("true"))
-                    req.setParams(params);
-                else
-                    System.out.println(DataValidator.validInsertParams(params));
-            }
-            case SEARCH_SELECT -> {
-                System.out.println("Start of building searching params with ' ' between them, type enter to end");
-                HashMap<String,String> params = buildParams(Operation.SEARCH_SELECT);
+                    if (DataValidator.validInsertParams(params).equals("true")) {
+                        restart = false;
+                        req.setParams(params);
+                    }else {
+                        System.out.println(DataValidator.validInsertParams(params));
+                    }
+                }
+                case SEARCH_SELECT -> {
 
-                if(DataValidator.validSearchParams(params))
-                    req.setParams(params);
-                else
-                    System.out.println("Wrong params");
+                    while (restart) {
+                        System.out.println("Start of building searching params with ' ' between them (column value), type enter to end");
+                        HashMap<String, String> params = buildParams(Operation.SEARCH_SELECT);
+
+                        if (DataValidator.validSearchParams(params)) {
+                            restart = false;
+                            req.setParams(DataValidator.rebuildParams(params));
+                            System.out.println("Type columns with space between names");
+                            String[] columns = scanner.nextLine().split(" ");
+                            if (DataValidator.validColumns(columns)) {
+                                req.setColumns(columns);
+                            } else {
+                                restart = true;
+                                System.out.println("Wrong columns abort mission");
+                            }
+                        } else {
+                            restart = true;
+                            System.out.println("Wrong params");
+                        }
+                    }
+                }
+                default -> throw new Exception("Not implemented");
             }
-            default -> throw new Exception("Not implemented");
         }
-
         return req;
     }
 
@@ -73,16 +93,33 @@ public class RequestBuilder {
 
         switch (op){
             case INSERT -> {
+                String value = "";
+
                 System.out.println("Type person name (default: Krzysztof)");
-                params.put("person", scanner.nextLine());
+                value = scanner.nextLine();
+                value = !value.isEmpty() ? value : "Krzysztof";
+                params.put("person", value);
+
                 System.out.println("Type date in format yyyy-MM-dd HH:mm:ss (default: today date)");
-                params.put("date", scanner.nextLine());
+                value = scanner.nextLine();
+                value = !value.isEmpty() ? value : "2023-10-12 10:30:51";
+                //TODO zmienić date!!!
+                params.put("date", value);
+
                 System.out.println("Type component name (default: default_component)");
-                params.put("component", scanner.nextLine());
+                value = scanner.nextLine();
+                value = !value.isEmpty() ? value : "default_component";
+                params.put("component", value);
+
                 System.out.println("Type priority (default: 0)");
-                params.put("priority", scanner.nextLine());
+                value = scanner.nextLine();
+                value = !value.isEmpty() ? value : "0";
+                params.put("priority", value);
+
                 System.out.println("Type description (default: blank)");
-                params.put("description", scanner.nextLine());
+                value = scanner.nextLine();
+                value = !value.isEmpty() ? value : "blank";
+                params.put("description", value);
             }
             case SEARCH_SELECT -> {
                 while(true){
