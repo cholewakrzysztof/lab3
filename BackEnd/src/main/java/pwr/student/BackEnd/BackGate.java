@@ -7,10 +7,10 @@ public class BackGate {
     private final SQLExecutor sqlExecutor;
     private final SQLBuilder sqlBuilder;
 
-    public BackGate() throws Exception {
+    public BackGate(String table) throws Exception {
         this.sqlExecutor = new SQLExecutor();
         this.sqlBuilder = new SQLBuilder();
-        sqlBuilder.choseTable("decision");
+        sqlBuilder.choseTable(table);
     }
     public void receiveRequest(Request req) throws Exception {
         respond = new Respond();

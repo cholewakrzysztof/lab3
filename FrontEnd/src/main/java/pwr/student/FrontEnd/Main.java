@@ -1,11 +1,12 @@
 package pwr.student.FrontEnd;
 
-import pwr.student.BackEnd.*;
+import pwr.student.BackEnd.BackGate;
+import pwr.student.BackEnd.Respond;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         FrontGate frontGate = new FrontGate();
-        BackGate backGate = new BackGate();
+        BackGate backGate = new BackGate("decision");
 
         try {
             while(true){
