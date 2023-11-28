@@ -12,10 +12,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Add table chose in BackGate constructor">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/lab3_FrontEnd_main_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/lab3_FrontEnd_main_jar.xml" afterDir="false" />
+    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Try to repair builds">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +97,7 @@
       <workItem from="1700468895485" duration="6379000" />
       <workItem from="1700485594184" duration="6423000" />
       <workItem from="1701164061962" duration="7239000" />
-      <workItem from="1701204504224" duration="5990000" />
+      <workItem from="1701204504224" duration="9699000" />
     </task>
     <task id="LOCAL-00001" summary="First push">
       <option name="closed" value="true" />
@@ -219,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701209097817</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Try to repair builds">
+      <option name="closed" value="true" />
+      <created>1701210692339</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1701210692339</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +249,8 @@
     <MESSAGE value="Added Date manage &#10;Add quit option&#10;Fix error message successful in INSERT and DELETE" />
     <MESSAGE value="Fix warnings" />
     <MESSAGE value="Add table chose in BackGate constructor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add table chose in BackGate constructor" />
+    <MESSAGE value="Try to repair builds" />
+    <option name="LAST_COMMIT_MESSAGE" value="Try to repair builds" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
