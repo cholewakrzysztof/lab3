@@ -16,34 +16,39 @@ public class DatabaseResultPrinter {
             col.add("date");
             col.add("description");
         }
-        Map<String,Integer> fieldWidth = getSizeOfColumns(rs,col);
 
-        //TODO read result set twice!
+        //TODO build title row and append on start
+        ArrayList<MyRow> copy = getListOfRows(rs,col);
+        MyRow title = new MyRow();
+        for (String column:col) {
+            title.put(column,column);
+        }
+        copy.add(title);
+
+        Map<String,Integer> fieldWidth = getSizeOfColumns(copy,col);
+
         for (String key : fieldWidth.keySet())
             System.out.println(key+" "+fieldWidth.get(key).toString());
 
-        StringBuilder title = new StringBuilder();
-        for (String column:col) {
-            title.append(column).append("\t");
-        }
+
         System.out.println(title);
-        while (rs.next()) {
-            StringBuilder row = new StringBuilder();
+        for(MyRow row : copy) {
+            StringBuilder rowString = new StringBuilder();
             for (String column:col) {
-                row.append(rs.getString(column)).append("\t");
+                rowString.append(resize(row.getString(column),fieldWidth.get(column)));
             }
-            System.out.println(row);
+            System.out.println(rowString);
         }
     }
 
-    private static Map<String, Integer> getSizeOfColumns(ResultSet rs, ArrayList<String> columns) throws Exception{
+    private static Map<String, Integer> getSizeOfColumns(ArrayList<MyRow> rows, ArrayList<String> columns) throws Exception{
             Map<String, Integer> sizes = new HashMap<>();
-            while (rs.next()) {
+            for(MyRow row : rows) {
                 columns.forEach(colName -> {
                     String value = null;
                     try {
-                        value = rs.getString(colName);
-                    } catch (SQLException e) {
+                        value = row.getString(colName);
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     if (sizes.containsKey(colName))
@@ -52,8 +57,32 @@ public class DatabaseResultPrinter {
                         sizes.put(colName,0);
                 });
             }
-            rs.beforeFirst();
 
         return sizes;
+    }
+
+    private static ArrayList<MyRow> getListOfRows(ResultSet rs,ArrayList<String> columns) throws SQLException {
+        ArrayList<MyRow> copy = new ArrayList<MyRow>();
+
+        while (rs.next()){
+            MyRow row = new MyRow();
+            columns.forEach(colName -> {
+                try {
+                    if(rs.findColumn(colName)>-1) {
+                        row.put(colName,rs.getString(colName));
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            copy.add(row);
+        }
+        return copy;
+    }
+    private static String resize(String str, int length){
+        StringBuilder strBuilder = new StringBuilder(str);
+        while (strBuilder.length()<length+2)
+            strBuilder.append(" ");
+        return strBuilder.toString();
     }
 }
