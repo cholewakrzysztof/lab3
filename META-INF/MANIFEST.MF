@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: pwr.student.FrontEnd.jar.Main
+Class-Path: lab3.BackEnd.main.jar sqlite-jdbc-3.44.0.0.jar slf4j-api-1.7
+ .36.jar lab3.FrontEnd.main.jar
+
