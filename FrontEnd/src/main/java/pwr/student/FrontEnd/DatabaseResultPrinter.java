@@ -17,28 +17,25 @@ public class DatabaseResultPrinter {
             col.add("description");
         }
 
-        //TODO build title row and append on start
         ArrayList<MyRow> copy = getListOfRows(rs,col);
         MyRow title = new MyRow();
-        for (String column:col) {
-            title.put(column,column);
-        }
-        copy.add(title);
+
+        col.forEach(column -> title.put(column,column));
+        copy.add(0,title);
 
         Map<String,Integer> fieldWidth = getSizeOfColumns(copy,col);
 
-        for (String key : fieldWidth.keySet())
-            System.out.println(key+" "+fieldWidth.get(key).toString());
-
-
-        System.out.println(title);
-        for(MyRow row : copy) {
+        copy.forEach(row -> {
             StringBuilder rowString = new StringBuilder();
-            for (String column:col) {
-                rowString.append(resize(row.getString(column),fieldWidth.get(column)));
-            }
+            col.forEach(column -> {
+                try {
+                    rowString.append(resize(row.getString(column),fieldWidth.get(column)));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
             System.out.println(rowString);
-        }
+        });
     }
 
     private static Map<String, Integer> getSizeOfColumns(ArrayList<MyRow> rows, ArrayList<String> columns) throws Exception{
@@ -54,7 +51,7 @@ public class DatabaseResultPrinter {
                     if (sizes.containsKey(colName))
                         sizes.put(colName, sizes.get(colName) > value.length() ? sizes.get(colName) : value.length());
                     else
-                        sizes.put(colName,0);
+                        sizes.put(colName,value.length());
                 });
             }
 
@@ -62,7 +59,7 @@ public class DatabaseResultPrinter {
     }
 
     private static ArrayList<MyRow> getListOfRows(ResultSet rs,ArrayList<String> columns) throws SQLException {
-        ArrayList<MyRow> copy = new ArrayList<MyRow>();
+        ArrayList<MyRow> copy = new ArrayList<>();
 
         while (rs.next()){
             MyRow row = new MyRow();
@@ -83,6 +80,6 @@ public class DatabaseResultPrinter {
         StringBuilder strBuilder = new StringBuilder(str);
         while (strBuilder.length()<length+2)
             strBuilder.append(" ");
-        return strBuilder.toString();
+        return strBuilder.append("|").toString();
     }
 }
