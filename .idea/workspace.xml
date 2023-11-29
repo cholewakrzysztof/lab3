@@ -12,10 +12,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Try to do responsive table result">
+    <list default="true" id="d29587fc-7aaf-4e35-a9ec-82cbc8404a94" name="Changes" comment="Responsive table result work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/DatabaseResultPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/MyRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/src/main/java/pwr/student/FrontEnd/MyRow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +99,7 @@
       <workItem from="1701164061962" duration="7239000" />
       <workItem from="1701204504224" duration="9860000" />
       <workItem from="1701262326025" duration="2421000" />
-      <workItem from="1701283087264" duration="2316000" />
+      <workItem from="1701283087264" duration="4179000" />
     </task>
     <task id="LOCAL-00001" summary="First push">
       <option name="closed" value="true" />
@@ -245,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701264729625</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Responsive table result work">
+      <option name="closed" value="true" />
+      <created>1701285455005</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1701285455005</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +278,8 @@
     <MESSAGE value="Try to repair builds" />
     <MESSAGE value="Fix build manifest file&#10;Try to do responsive table result" />
     <MESSAGE value="Try to do responsive table result" />
-    <option name="LAST_COMMIT_MESSAGE" value="Try to do responsive table result" />
+    <MESSAGE value="Responsive table result work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Responsive table result work" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
